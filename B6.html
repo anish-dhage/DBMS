@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>B6</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+		var jsonobj = {"Name":"Apoorv","Roll":"31106"};
+		document.write("<h1>JSON Object</h1><hr>");
+		document.write("Name : "+jsonobj.Name+"<br>");
+		document.write("Roll No : "+jsonobj.Roll+"<br>");
+		
+		var projects = { 
+			"PASC" : [
+				{ "Name" : "MCQ", "domain" : "Django" },
+				{ "Name" : "Fricorp", "domain" : "Fitbit Web API" }
+			],
+			"TE" : [
+				{ "Name" : "NIO", "domain" : "Deep Learning" }
+			]
+		}
+		var i = 0
+		document.writeln("<table border = '2'><tr>");
+		for(i = 0;i<projects.PASC.length;i++){
+		document.writeln("<td>");
+		document.writeln("<table border = '1' width = 100 >");
+		document.writeln("<tr><td><b>Name</b></td><td width = 50>" +
+		projects.PASC[i].Name+"</td></tr>");
+		document.writeln("<tr><td><b>domain</b></td><td width = 50>" + projects.PASC[i].domain
+		+"</td></tr>");
+		document.writeln("</table>");
+		document.writeln("</td>");
+		}
+		for(i = 0;i<projects.TE.length;i++){
+		document.writeln("<td>");
+		document.writeln("<table border = '1' width = 100 >");
+		document.writeln("<tr><td><b>Name</b></td><td width = 50>" +
+		projects.TE[i].Name+"</td></tr>");
+		document.writeln("<tr><td><b>domain</b></td><td width = 50>" +
+		projects.TE[i].domain+"</td></tr>");
+		document.writeln("</table>");
+		document.writeln("</td>");
+		}
+		document.writeln("</tr></table>");
+		</script>
+	</body>
+</html>

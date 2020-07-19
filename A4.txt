@@ -1,0 +1,15 @@
+select * from Customer natural join Orders;
+
+select b.Title,a.Author_Name,a.Country from Author a inner join Book b where a.Author_No = b.Author_No;
+
+select c.Cust_No, c.First_Name, o.Order_No from Customer c left join Orders o on c.Cust_No = o.Cust_No where Order_No is NULL;
+
+select o.Order_No, b.ISBN, b.Title from Orders o right join Book b on o.ISBN = b.ISBN where Order_No is NULL;
+
+select c.First_Name,b.Title,b.Author_No,b.Year from Customer c natural join Orders o natural join Book b where ISBN = 112233;
+
+select c.First_Name, sum(o.Quantity) as Total_Books from Customer c natural join Orders o group by o.Cust_No;
+
+select o.Cust_No, o.Order_No, o.ISBN from Orders o right join Book on o.ISBN = Book.ISBN where Book.Title = "DSA";
+
+select c.Company from Customer c natural join Orders where Year(ODate) = 2015;

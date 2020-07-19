@@ -1,0 +1,87 @@
+{
+  "Students": [
+    {
+      "name": "Anish Dhage",
+      "class": "TE1",
+      "rollno": 31105,
+      "interests": ["Sleep","Repeat"],
+      "project": [
+        {
+          "name": "Solar Energy",
+          "contribution": ["Machine Learning"],
+          "stack": ["Scikit","Matplotlib"]
+        },
+        {
+          "name": "Diabetic Retinopathy Detection",
+          "contribution": ["Image Processing","Deep Learning"],
+          "stack": ["OpenCV","Keras"]
+        }
+      ],
+      "marks": 90,
+      "college": "PICT"
+    },
+    {
+      "name": "Apoorv Dixit",
+      "class": "TE1",
+      "rollno": 31106,
+      "interests": [
+        "Breathing",
+        "Blinking",
+        
+      ],
+      "project": [
+        {
+          "name": "Pulzion 19 MCQ Platform",
+          "contribution": "Back End Web Development",
+          "stack": "Django"
+        },
+        {
+          "name": "Diabetic Retinopathy Detection",
+          "contribution": [
+            "Image Processing",
+            "Deep Learning"
+          ],
+          "stack": [
+            "OpenCV",
+            "Keras"
+          ]
+        }
+      ],
+      "marks": 85,
+      "college": "PICT"
+    },
+    {
+      "name": "Ashwin Sapre",
+      "class": "TE1",
+      "rollno": 31107,
+      "interests": [
+        "Football",
+        "Reddit",
+        "Cats"
+      ],
+      "marks": 80,
+      "college": "PICT"
+    },
+    {
+      "name": "Dhruv Inamdar",
+      "class": "TE1",
+      "rollno": 31118,
+      "interests": [
+        "Football",
+        "Basketball",
+        "All the sports out there",
+        "Except Cricket",
+        "And Women Sports lol"
+      ],
+      "marks": 75,
+      "college": "PICT"
+    },
+    {
+      "name": "Mihir Kumar",
+      "class": "TE2",
+      "rollno": 32038,
+      "marks": 87,
+      "college": "PICT"
+    }
+  ]
+}

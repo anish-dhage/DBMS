@@ -1,0 +1,126 @@
+cat ~/.mysql_history
+
+mysql -h 10.10.10.54 -u t31106 -p
+t31106
+use t31106db
+show tables;
+
+Delete from Author;
+Delete from Customer;
+Delete from Orders;
+Delete from Publisher;
+Delete from book;
+
+drop table Author;  
+drop table Customer;
+drop table Orders;
+drop table Publisher;
+drop table book;
+
+create table Author (Author_No int, Author_Name varchar(20), Country varchar(20));
+create table Customer (cust_no int,cust_fname varchar(20),cust_lname varchar(20),cust_company varchar(20),cust_addr varchar(30),city varchar(20),cust_phone bigint);
+Create table Orders(order_no int, cust_no int, ISBN bigint, publisher_no int, pub_year year);
+Create table Publisher ( publisher_no int, publisher_name varchar(30), publisher_addr varchar(80), publisher_year year );
+create table book(ISBN bigint, title varchar(30), unit_price int, author_no int, publisher_no int, pub_year year);
+
+insert into Author values (1,"Dan Brown","USA");
+insert into Author values (2,"John Grisham","USA");
+insert into Author values (3,"JK Rowling","UK");
+insert into Author values (4,"Agatha Cristie","Australia");
+insert into Author values (5,"Arthur Conan Doyle","Scotland");
+insert into Author values (6,"Alexandre Dumas","France");
+insert into Author values (7,"Rabindranath Tagore","India");
+
+insert into Customer values(1,"Apoorv","Dixit","Life.ai","Mukundnagar","Pune",9857297283);
+insert into Customer values(2,"Anish","Dhage","ColloTech","Aundh","Pune",8888297283);
+insert into Customer values(3,"Ashwin","Sapre","Aventior","Baner","Mumbai",7475611183);
+insert into Customer values(4,"Dhruv","Inamdar","Quagga Tech","NIBM","Nashik",9975625200);
+insert into Customer values(5,"Mihir","Kumar","Zestl","Viman Nagar","Varanasi",8888888888);
+insert into Customer values(6,"Anagha","Niravane","Rammer.ai","Lullinagar","Liliput",9876987698);
+insert into Customer values(7,"Darshan","Bari","Code Nation","Thane","Not Mumbai",7776955598);
+insert into Customer values(8,"Hrishikesh","Himalaya","Hackerrank","Viman Nagar","Pune",7734795598);
+insert into Customer values(9,"Prakash","Satpute","Code Nation","Green Park","Kochi",9996955598);
+insert into Customer values(10,"Himesh","Kiran","Code Nation","Casterly Rock","Chennai",7126955598);
+insert into Customer values(11,"Prathamesh","Khare","CodeChef","Thane","Mumbai",8886955598);
+
+insert into book values(1111,"Angels And Demons",1200,1,1,2000);
+insert into book values(2222,"The Innocent Man",1500,2,2,2006);
+insert into book values(3333,"Harry Potter Collection",5900,3,3,2016);
+insert into book values(4444,"Endless Night",400,4,1,1967);
+insert into book values(5555,"Sherlock Holmes",2900,5,2,1995);
+insert into book values(6666,"The Three Musketeers",350,6,2,1947);
+insert into book values(7777,"Hike it Away!",320,7,3,1944);
+insert into book values(8888,"Da Vinci Code",1400,1,1,2004);
+insert into book values(9999,"The Abduction",100,2,2,2015);
+
+insert into Orders values(10001,1,8888,1,2015-01-01);
+insert into Orders values(10002,6,2222,1,2016-02-03);
+insert into Orders values(10003,2,3333,2,2018-12-06);
+insert into Orders values(10004,4,4444,3,2017-07-22);
+insert into Orders values(10005,5,4444,3,2010-07-30);
+insert into Orders values(10006,3,7777,2,2014-11-29);
+insert into Orders values(10007,7,1111,2,2019-01-19);
+insert into Orders values(10008,1,2222,2,2019-01-19);
+
+insert into Publisher values (1,"Harper Collins","UK",1990);
+insert into Publisher values (2,"Penguin","India",2001);
+insert into Publisher values (3,"Scholastic","USA",1985);
+insert into Publisher values (4,"Rupa","India",2015);
+insert into Publisher values (5,"Bloomsbury","Ireland",2015);
+insert into Publisher values (6,"MacMillan","Switzerland",2016);
+
+alter table Author add primary key (Author_No);
+alter table Customer add primary key (cust_no);
+alter table Orders add primary key (order_no);
+alter table Publisher add primary key (publisher_no);
+alter table book add primary key (ISBN);
+
+alter table Orders add constraint ISBNfk foreign key (ISBN) references book(ISBN);
+alter table Orders add constraint cust_nofk foreign key (cust_no) references Customer(cust_no);
+alter table Orders add constraint publisher_nofk foreign key (publisher_no) references Publisher(publisher_no);
+alter table book add constraint author_nofk foreign key (author_no) references Author(Author_No);
+alter table book add constraint publisher_nofk foreign key (publisher_no) references Publisher(publisher_no);
+
+show tables;
+select * from Author;
+select * from Customer;
+select * from Orders;
+select * from Publisher;
+select * from book;
+
+=================================================================================================================
+
+1. Insert at least 10 records in customer table and insert other tables accordingly.
+show tables;
+select * from Author;
+select * from Customer;
+select * from Orders;
+select * from Publisher;
+select * from book;
+
+2. Display all customer details with city pune and mumbai and customer first name starting with 'p' or 'h'.
+select * from Customer where (City="Pune" or City="Mumbai") and (cust_fname like "P%" or cust_fname like "H%");
+
+3. lists the number of different customer cities.(use of distinct)
+select distinct City from Customer;
+
+4. Give 5% increase in price of the books with publishing year 2015. ( use of update)
+update book set unit_price=unit_price*1.05 where pub_year=2015;
+
+5. Delete customer details living in pune.
+Delete from Customer where City="Pune";
+
+6. Find the names of authors living in India or Australia (use of UNION)
+select Author_Name from Author where Country = "India" UNION select Author_Name from Author where Country = "Australia";
+
+7. Find the publishers who are established in year 2015 as well as in 2016 (use of INTERSECT)
+select publisher_name from Publisher where publisher_year = 2015 INTERSECT select publisher_name from Publisher where publisher_year = 2016;
+
+8. Find the book having maximum price and find titles of book having price between 300 and 400 (use of max and between)
+select * from book where unit_price between 300 and 400;
+
+9. Display all titles of books with price and published year in decreasing order of publishing year.
+select title,unit_price,pub_year from book order by pub_year desc;
+
+10. Display title,author_no and publisher_no of all books published in 2000,2004,2006. (use of IN)
+select title,author_no,publisher_no from book where pub_year in(2000,2004,2006);
